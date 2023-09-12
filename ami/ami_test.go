@@ -3,20 +3,34 @@ package ami
 import "testing"
 
 func TestPerimetro(t *testing.T) {
-	resultado := Perimetro(10.0, 10.0)
+	retangulo := Retangulo{10.0, 10.0}
+	resultado := Perimetro(retangulo)
 	esperado := 40.0
 
 	if resultado != esperado {
 		t.Errorf("resuldado %.2f, esperado %.2f", resultado, esperado)
 	}
-
 }
 
 func TestArea(t *testing.T) {
-	resultado := Area(2.0, 6.0)
-	esperado := 12.0
 
-	if resultado != esperado {
-		t.Errorf("resultado %.2f, esperado %.2f", resultado, esperado)
+	verificaArea := func(t *testing.T, forma Forma, esperado float64) {
+		t.Helper()
+		resultado := forma.Area()
+
+		if resultado != esperado {
+			t.Errorf("resultado %.2f, esperado %.2f", resultado, esperado)
+		}
 	}
+
+	t.Run("em retangulo", func(t *testing.T) {
+		retangulo := Retangulo{6.0, 12.0}
+		verificaArea(t, retangulo, 72.0)
+	})
+
+	t.Run("Em circulo", func(t *testing.T) {
+		circulo := Circulo{10}
+		verificaArea(t, circulo, 314.1592653589793)
+
+	})
 }
