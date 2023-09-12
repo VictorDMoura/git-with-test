@@ -29,7 +29,7 @@ type Triangulo struct {
 }
 
 func (t Triangulo) Area() float64 {
-	return (t.Base * t.Altura) * 0.5 * 0
+	return (t.Base * t.Altura) * 0.5
 }
 
 func Perimetro(retangulo Retangulo) float64 {
