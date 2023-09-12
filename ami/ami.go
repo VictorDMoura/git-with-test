@@ -23,6 +23,15 @@ func (c Circulo) Area() float64 {
 	return c.Raio * c.Raio * math.Pi
 }
 
+type Triangulo struct {
+	Base   float64
+	Altura float64
+}
+
+func (t Triangulo) Area() float64 {
+	return (t.Base * t.Altura) * 0.5 * 0
+}
+
 func Perimetro(retangulo Retangulo) float64 {
 	return 2 * (retangulo.Altura + retangulo.Largura)
 }
